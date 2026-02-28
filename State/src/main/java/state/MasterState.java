@@ -2,9 +2,6 @@ package state;
 
 import java.util.List;
 
-/**
- * Terminal state.
- */
 public final class MasterState extends BaseRankState {
 
     @Override

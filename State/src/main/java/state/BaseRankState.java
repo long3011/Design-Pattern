@@ -2,9 +2,6 @@ package state;
 
 import java.util.List;
 
-/**
- * Small helper base class so concrete states can focus on behavior.
- */
 abstract class BaseRankState implements RankState {
 
     @Override

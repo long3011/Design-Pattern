@@ -4,11 +4,6 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-/**
- * Console game loop.
- *
- * Kept separate from the domain logic so {@link GameCharacter} + states remain testable.
- */
 public final class Game {
 
     private final Scanner in;

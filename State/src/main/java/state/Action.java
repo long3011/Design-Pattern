@@ -1,8 +1,5 @@
 package state;
 
-/**
- * Player-facing actions.
- */
 public enum Action {
     TRAIN("train"),
     MEDITATE("meditate"),

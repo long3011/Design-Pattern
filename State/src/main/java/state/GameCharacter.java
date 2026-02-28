@@ -2,9 +2,7 @@ package state;
 
 import java.util.Objects;
 
-/**
- * Context class in the State pattern.
- */
+
 public final class GameCharacter {
 
     private final String name;
@@ -90,10 +88,6 @@ public final class GameCharacter {
         return healthPoints > 0;
     }
 
-    /**
-     * Promotes the character state based on XP thresholds.
-     * If already MASTER, no changes are made.
-     */
     public void promoteIfNeeded() {
         if (state.rank() == Rank.MASTER) {
             return;

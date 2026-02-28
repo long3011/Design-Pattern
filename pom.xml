@@ -15,6 +15,7 @@
         <module>observers</module>
         <module>singleton</module>
         <module>decorator</module>
+        <module>State</module>
     </modules>
 
     <properties>
