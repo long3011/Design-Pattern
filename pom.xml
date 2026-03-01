@@ -16,11 +16,16 @@
         <module>singleton</module>
         <module>decorator</module>
         <module>State</module>
+        <module>template</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <!--
+          Use a broadly available Java version by default.
+          If you have JDK 25 installed, you can switch this back to 25.
+        -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
