@@ -14,10 +14,10 @@ import java.util.Scanner;
  * A console Mastermind-style game.
  *
  * <p>Each player has a limited number of guesses to break a secret numeric code.
- * A guess yields a hint (bulls = correct digit+position, cows = correct digit wrong position).
+ * A guess yields a hint (green = correct digit+position, yellow = correct digit wrong position).
  *
  * <p>Winning: first player to guess wins immediately.
- * Losing: if everyone runs out of turns, the player with the best (bulls, then cows) wins.
+ * Losing: if everyone runs out of turns, the player with the best (green, then yellow) wins.
  */
 public final class CodeBreakerGame extends Game {
 
@@ -27,10 +27,8 @@ public final class CodeBreakerGame extends Game {
     private final Scanner scanner;
     private final PrintStream out;
     private final Random random;
-
-    private int numberOfPlayers;
+    
     private int codeLength;
-    private int maxTurns;
 
     private final List<PlayerState> players = new ArrayList<>();
     private String secret;
@@ -50,17 +48,12 @@ public final class CodeBreakerGame extends Game {
 
     @Override
     public void initializeGame(int numberOfPlayers) {
-        if (numberOfPlayers <= 0) {
-            throw new IllegalArgumentException("numberOfPlayers must be > 0");
-        }
-
-        this.numberOfPlayers = numberOfPlayers;
         this.codeLength = DEFAULT_CODE_LENGTH;
-        this.maxTurns = DEFAULT_MAX_TURNS;
+        int maxTurns = DEFAULT_MAX_TURNS;
 
         out.println("=== Code Breaker (Template Method Demo) ===");
         out.println("Rules: guess the " + codeLength + "-digit secret code.");
-        out.println("Hint format: Gree = right digit in right place; Yellow = right digit wrong place.");
+        out.println("Hint format: Green = right digit in right place; Yellow = right digit wrong place.");
         out.println("Turns per player: " + maxTurns);
         out.println();
 
@@ -107,9 +100,9 @@ public final class CodeBreakerGame extends Game {
         Hint hint = score(secret, guess);
         p.bestHint = Hint.max(p.bestHint, hint);
 
-        out.println("Guess: " + guess + " -> Green=" + hint.bulls + ", Yellow=" + hint.cows);
+        out.println("Guess: " + guess + " -> Green=" + hint.green + ", Yellow=" + hint.yellow);
 
-        if (hint.bulls == codeLength) {
+        if (hint.green == codeLength) {
             finished = true;
             winnerIndex = player;
             out.println(p.name + " cracked the code!");
@@ -134,7 +127,7 @@ public final class CodeBreakerGame extends Game {
             return;
         }
 
-        // No one guessed; pick best by (bulls, cows), tie -> earliest player.
+        // No one guessed; pick best by (green, yellow), tie -> earliest player.
         int best = 0;
         for (int i = 1; i < players.size(); i++) {
             if (players.get(i).bestHint.compareTo(players.get(best).bestHint) > 0) {
@@ -143,8 +136,8 @@ public final class CodeBreakerGame extends Game {
         }
 
         out.println("No one cracked the code.");
-        out.println("Best performance: " + players.get(best).name + " (best bulls="
-                + players.get(best).bestHint.bulls + ", cows=" + players.get(best).bestHint.cows + ")");
+        out.println("Best performance: " + players.get(best).name + " (best green="
+                + players.get(best).bestHint.green + ", yellow=" + players.get(best).bestHint.yellow + ")");
         out.println("Secret was: " + secret);
     }
 
@@ -193,7 +186,7 @@ public final class CodeBreakerGame extends Game {
             throw new IllegalArgumentException("secret and guess must have same length");
         }
 
-        int bulls = 0;
+        int green = 0;
         int[] secretCount = new int[10];
         int[] guessCount = new int[10];
 
@@ -201,19 +194,19 @@ public final class CodeBreakerGame extends Game {
             char s = secret.charAt(i);
             char g = guess.charAt(i);
             if (s == g) {
-                bulls++;
+                green++;
             } else {
                 secretCount[s - '0']++;
                 guessCount[g - '0']++;
             }
         }
 
-        int cows = 0;
+        int yellow = 0;
         for (int d = 0; d < 10; d++) {
-            cows += Math.min(secretCount[d], guessCount[d]);
+            yellow += Math.min(secretCount[d], guessCount[d]);
         }
 
-        return new Hint(bulls, cows);
+        return new Hint(green, yellow);
     }
 
     private static final class PlayerState {
@@ -228,19 +221,19 @@ public final class CodeBreakerGame extends Game {
     }
 
     static final class Hint implements Comparable<Hint> {
-        final int bulls;
-        final int cows;
+        final int green;
+        final int yellow;
 
-        Hint(int bulls, int cows) {
-            this.bulls = bulls;
-            this.cows = cows;
+        Hint(int green, int yellow) {
+            this.green = green;
+            this.yellow = yellow;
         }
 
         @Override
         public int compareTo(Hint other) {
-            int c = Integer.compare(this.bulls, other.bulls);
+            int c = Integer.compare(this.green, other.green);
             if (c != 0) return c;
-            return Integer.compare(this.cows, other.cows);
+            return Integer.compare(this.yellow, other.yellow);
         }
 
         static Hint max(Hint a, Hint b) {
