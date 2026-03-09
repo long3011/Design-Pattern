@@ -18,6 +18,7 @@
         <module>State</module>
         <module>template</module>
         <module>strategy</module>
+        <module>chain_of_responsibility</module>
     </modules>
 
     <properties>
