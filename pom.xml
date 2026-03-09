@@ -17,6 +17,7 @@
         <module>decorator</module>
         <module>State</module>
         <module>template</module>
+        <module>strategy</module>
     </modules>
 
     <properties>

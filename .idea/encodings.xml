@@ -17,6 +17,8 @@
     <file url="file://$PROJECT_DIR$/singleton/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/strategy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/strategy/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/template/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/template/src/main/resources" charset="UTF-8" />
   </component>
