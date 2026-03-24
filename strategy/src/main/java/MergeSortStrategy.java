@@ -1,15 +1,3 @@
-/**
- * Concrete Strategy: Merge Sort
- *
- * Merge Sort is a divide-and-conquer algorithm that recursively splits the array
- * in half, sorts each half, and then merges the two sorted halves back together.
- * It guarantees O(n log n) time complexity in all cases (best, average, and worst),
- * but requires O(n) extra space for the temporary arrays used during merging.
- *
- * Reference: https://www.geeksforgeeks.org/merge-sort/
- * The core merge/mergeSort logic is adapted from the GeeksForGeeks Java implementation
- * and integrated into the Strategy pattern.
- */
 public class MergeSortStrategy implements SortStrategy {
 
     @Override
@@ -29,9 +17,6 @@ public class MergeSortStrategy implements SortStrategy {
         }
     }
 
-    /**
-     * Merges two sorted sub-arrays array[left..mid] and array[mid+1..right].
-     */
     private void merge(int[] array, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;

@@ -29,7 +29,7 @@ public class DevelopmentSuggestionHandler extends FeedbackHandler {
     }
 
     private int generateTicketNumber() {
-        return (int) (Math.random() * 9_000) + 1_000;
+        return (int) (Math.random() * 9000) + 1000;
     }
 }
 

@@ -1,19 +1,5 @@
 import java.util.List;
 
-/**
- * Main program for the Chain of Responsibility – Customer Feedback demo.
- *
- * <p>The chain is assembled as:
- * <pre>
- *   CompensationClaimHandler
- *       → ContactRequestHandler
- *           → DevelopmentSuggestionHandler
- *               → GeneralFeedbackHandler
- * </pre>
- *
- * <p>Each incoming {@link Message} travels down the chain until a handler
- * claims responsibility for its {@link MessageType}.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -26,12 +12,11 @@ public class Main {
         FeedbackHandler suggestionHandler   = new DevelopmentSuggestionHandler();
         FeedbackHandler generalHandler      = new GeneralFeedbackHandler();
 
-        // Link the handlers together (fluent API)
         compensationHandler
                 .setNext(contactHandler)
                 .setNext(suggestionHandler)
                 .setNext(generalHandler);
-
+    
         // ----------------------------------------------------------------
         // 2. Create a variety of customer feedback messages
         // ----------------------------------------------------------------

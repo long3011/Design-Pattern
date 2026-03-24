@@ -23,13 +23,6 @@ public class HeapSortStrategy implements SortStrategy {
         }
     }
 
-    /**
-     * Ensures the sub-tree rooted at index {@code i} satisfies the max-heap property.
-     *
-     * @param array the heap array
-     * @param n     the size of the heap (portion of array considered)
-     * @param i     the root index of the sub-tree to heapify
-     */
     private void heapify(int[] array, int n, int i) {
         int largest = i;        // Assume the root is the largest
         int left    = 2 * i + 1;

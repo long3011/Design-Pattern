@@ -5,10 +5,10 @@ public class Main {
     // Dataset sizes
     // -----------------------------------------------------------------------
     private static final int SMALL_SIZE = 30;
-    private static final int LARGE_SIZE = 100_000;
+    private static final int LARGE_SIZE = 100000;
 
     // Value range for random integers
-    private static final int VALUE_BOUND = 1_000_000;
+    private static final int VALUE_BOUND = 1000000;
 
     public static void main(String[] args) {
         Random rng = new Random(42);   // fixed seed → reproducible results
@@ -44,7 +44,7 @@ public class Main {
         for (SortStrategy strategy : strategies) {
             sorter.setStrategy(strategy);
             long nanoseconds = sorter.sortAndMeasure(dataset);
-            double milliseconds = nanoseconds / 1_000_000.0;
+            double milliseconds = nanoseconds / 1000000.0;
 
             System.out.printf("%-20s %15d %15.3f%n",
                     strategy.getName(), nanoseconds, milliseconds);

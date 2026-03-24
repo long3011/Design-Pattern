@@ -19,6 +19,7 @@
         <module>template</module>
         <module>strategy</module>
         <module>chain_of_responsibility</module>
+        <module>memento</module>
     </modules>
 
     <properties>
