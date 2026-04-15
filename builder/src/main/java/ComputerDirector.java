@@ -1,18 +1,11 @@
 public class ComputerDirector {
-    private ComputerBuilder builder;
+    private final ComputerBuilder builder;
 
-    public Computer constructGamingComputer() {
-        this.builder = new GamingComputerBuilder();
-        builder.buildProcessor();
-        builder.buildRAM();
-        builder.buildHardDrive();
-        builder.buildGraphicsCard();
-        builder.buildOperatingSystem();
-        return builder.getComputer();
+    public ComputerDirector(ComputerBuilder builder) {
+        this.builder = builder;
     }
 
-    public Computer constructOfficeComputer() {
-        this.builder = new OfficeComputerBuilder();
+    public Computer constructComputer() {
         builder.buildProcessor();
         builder.buildRAM();
         builder.buildHardDrive();

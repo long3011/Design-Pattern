@@ -1,8 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        ComputerDirector computerDirector = new ComputerDirector();
-        Computer officeComputer = computerDirector.constructOfficeComputer();
-        Computer gamingComputer = computerDirector.constructGamingComputer();
+        ComputerDirector gamingComputerDirector = new ComputerDirector(new GamingComputerBuilder());
+        ComputerDirector officeComputerDirector = new ComputerDirector(new OfficeComputerBuilder());
+        Computer officeComputer = gamingComputerDirector.constructComputer();
+        Computer gamingComputer = officeComputerDirector.constructComputer();
 
         System.out.println("=== Gaming Computer ===");
         System.out.println(gamingComputer);
