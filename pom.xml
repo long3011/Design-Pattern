@@ -24,6 +24,8 @@
         <module>visitor</module>
         <module>builder</module>
         <module>adapter</module>
+        <module>prototype</module>
+        <module>mediator</module>
     </modules>
 
     <properties>
