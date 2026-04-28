@@ -2,9 +2,7 @@ package solutions.facade;
 
 import java.io.IOException;
 
-/**
- * Facade that hides HTTP access and JSON parsing behind one simple operation.
- */
+
 public class ApiAccessFacade {
     private final HttpRequestHandler httpRequestHandler;
     private final JsonResponseParser jsonResponseParser;
