@@ -28,6 +28,7 @@
         <module>mediator</module>
         <module>iterator</module>
         <module>facade</module>
+        <module>command</module>
     </modules>
 
     <properties>
